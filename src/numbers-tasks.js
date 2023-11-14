@@ -51,9 +51,12 @@ function getCircleCircumference(radius) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {
-  throw new Error('Not implemented');
-  // return (value1 + value2) / 2;
+function getAverage(value1, value2) {
+  // throw new Error('Not implemented');
+  if (Number.isFinite((value1 + value2) / 2)) {
+    return (value1 + value2) / 2;
+  }
+  return Number.MAX_VALUE;
 }
 
 /**
@@ -207,16 +210,10 @@ function roundToPowerOfTen(num, pow) {
  */
 function isPrime(n) {
   // throw new Error('Not implemented');
-  let result;
-
-  if (n > 1) {
-    for (let i = 2; i < n; i + 1) {
-      if (!(n % i)) result = false;
-    }
-    result = true;
+  for (let i = 2; i < n; i += 1) {
+    if (!(n % i)) return false;
   }
-
-  return result;
+  return true;
 }
 
 /**
@@ -236,10 +233,8 @@ function isPrime(n) {
  */
 function toNumber(value, def) {
   // throw new Error('Not implemented');
-  const newValue = value.toNumber();
-
-  if (Number.isFinite(newValue)) {
-    return newValue;
+  if (Number.isFinite(Number(value))) {
+    return Number(value);
   }
   return def;
 }
@@ -257,7 +252,7 @@ function toNumber(value, def) {
  */
 function getCube(num) {
   // throw new Error('Not implemented');
-  return num * num * num;
+  return num ** 3;
 }
 
 /**
@@ -291,7 +286,7 @@ function getFibonacciNumber(/* index */) {
 function getSumToN(n) {
   // throw new Error('Not implemented');
   let sum = 0;
-  for (let i = 1; i <= n; i + 1) {
+  for (let i = 1; i <= n; i += 1) {
     sum += i;
   }
   return sum;
@@ -323,8 +318,9 @@ function getSumOfDigits(/* num */) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(/* num */) {
-  throw new Error('Not implemented');
+function isPowerOfTwo(num) {
+  // throw new Error('Not implemented');
+  return Number.isInteger(Math.log2(num));
 }
 
 /**
@@ -353,8 +349,9 @@ function getSine(num) {
  * 255, 16 => 'ff'
  * 2, 2    => '10'
  */
-function numberToStringInBase(/* number, base */) {
-  throw new Error('Not implemented');
+function numberToStringInBase(number, base) {
+  // throw new Error('Not implemented');
+  return number.toString(base);
 }
 
 /**
@@ -367,8 +364,9 @@ function numberToStringInBase(/* number, base */) {
  * @example:
  * 12345, 2    => '1.23e+4'
  */
-function toExponential(/* number, fractionDigits */) {
-  throw new Error('Not implemented');
+function toExponential(number, fractionDigits) {
+  // throw new Error('Not implemented');
+  return number.toExponential(fractionDigits);
 }
 
 /**
@@ -382,8 +380,9 @@ function toExponential(/* number, fractionDigits */) {
  * 12345, 2    => '12345.00'
  * 12.345, 1   => '12.3'
  */
-function toFixed(/* number, fractionDigits */) {
-  throw new Error('Not implemented');
+function toFixed(number, fractionDigits) {
+  // throw new Error('Not implemented');
+  return number.toFixed(fractionDigits);
 }
 
 /**
@@ -398,8 +397,9 @@ function toFixed(/* number, fractionDigits */) {
  * 12345, 7    => '12345.00'
  * 12.345, 4   => '12.35'
  */
-function toPrecision(/* number, precision */) {
-  throw new Error('Not implemented');
+function toPrecision(number, precision) {
+  // throw new Error('Not implemented');
+  return number.toPrecision(precision);
 }
 
 /**
@@ -412,8 +412,9 @@ function toPrecision(/* number, precision */) {
  * new Number(5) => 5
  * Number(-5)    => -5
  */
-function getNumberValue(/* number */) {
-  throw new Error('Not implemented');
+function getNumberValue(number) {
+  // throw new Error('Not implemented');
+  return number.valueOf();
 }
 
 /**
@@ -462,8 +463,9 @@ function isInteger(number) {
  * '4.567abcdefgh' => 4.567
  * 'abcdefgh'      => NaN
  */
-function getFloatOnString(/* str */) {
-  throw new Error('Not implemented');
+function getFloatOnString(str) {
+  // throw new Error('Not implemented');
+  return Number.parseFloat(str);
 }
 
 /**
@@ -480,8 +482,9 @@ function getFloatOnString(/* str */) {
  * '1.234', 2           => 1
  * '10', 8              => 8
  */
-function getIntegerOnString(/* str, base */) {
-  throw new Error('Not implemented');
+function getIntegerOnString(str, base) {
+  // throw new Error('Not implemented');
+  return Number.parseInt(str, base);
 }
 
 /**
@@ -497,7 +500,7 @@ function getIntegerOnString(/* str, base */) {
  */
 function isSafeInteger(number) {
   // throw new Error('Not implemented');
-  return Number.isInteger(number);
+  return Number.isSafeInteger(number);
 }
 
 /**
@@ -576,7 +579,7 @@ function getIntegerPartNumber(number) {
  */
 function getSumOfNumbers(x1, x2, x3) {
   // throw new Error('Not implemented');
-  return x1 + x2 + x3;
+  return (x1 + x2 + x3).toFixed(1);
 }
 
 /**
@@ -591,8 +594,9 @@ function getSumOfNumbers(x1, x2, x3) {
  * -5, -6 => -5
  * 0, 5   => 5
  */
-function getMaxNumber(/* firstNumber, secondNumber */) {
-  throw new Error('Not implemented');
+function getMaxNumber(firstNumber, secondNumber) {
+  // throw new Error('Not implemented');
+  return Math.max(firstNumber, secondNumber);
 }
 
 /**
@@ -607,8 +611,9 @@ function getMaxNumber(/* firstNumber, secondNumber */) {
  * -5, 0 => -5 | -4 | -3 | -2 | -1 | 0
  * -1, 1 => -1 | 0 | 1
  */
-function getRandomInteger(/* min, max */) {
-  throw new Error('Not implemented');
+function getRandomInteger(min, max) {
+  // throw new Error('Not implemented');
+  return Math.floor(min + Math.random() * (max + 1 - min));
 }
 
 /**
@@ -621,8 +626,13 @@ function getRandomInteger(/* min, max */) {
  * @example:
  * 3, 4 => 5
  */
-function getHypotenuse(/* a, b */) {
-  throw new Error('Not implemented');
+function getHypotenuse(a, b) {
+  // throw new Error('Not implemented');
+  // return Math.sqrt(a ** 2 + b ** 2);
+  if (Number.isFinite(Math.hypot(a, b))) {
+    return Math.hypot(a, b);
+  }
+  return Number.MAX_VALUE;
 }
 
 /**
@@ -638,8 +648,13 @@ function getHypotenuse(/* a, b */) {
  * 10 => 5
  * 15 => 8
  */
-function getCountOfOddNumbers(/* number */) {
-  throw new Error('Not implemented');
+function getCountOfOddNumbers(number) {
+  // throw new Error('Not implemented');
+  let amount = 0;
+  for (let i = 0; i <= Math.abs(number); i += 1) {
+    if (i % 2 !== 0) amount += 1;
+  }
+  return amount;
 }
 
 module.exports = {
